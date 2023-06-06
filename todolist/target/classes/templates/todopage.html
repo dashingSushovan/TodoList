@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="/style/todo.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/script/todo.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="todo-add">
+            <form action="/addtodo" method="post">
+                <input type="text" name="action" placeholder="Enter Text here">
+                <input type="submit" value="ADD">
+            </form>
+        </div>
+        <div class="todo-show">
+            <div class="todo-list" th:each = "todo : ${todos}">
+                <input type="checkbox">
+                <p th:text= "${todo.action}"></p>
+                <a href="#" th:attr="onclick=|onRemove('${todo.id}')|">
+                    <i class="material-icons">&#xe872;</i>
+                </a>
+            </div>
+        </div>
+</body>
+</html>
